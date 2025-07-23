@@ -6,6 +6,7 @@ const playGameBtn = document.getElementById("playGameBtn");
 playGameBtn.addEventListener("click", () => {
   landingPage.style.display = "none";
   gameContainer.style.display = "block";
+  startGame(); // Automatically start the game
 });
 
 // Game elements
@@ -16,7 +17,7 @@ const typeArea = document.querySelector(".typingArea");
 const btn = document.querySelector(".btn");
 const audioBtn = document.querySelector(".audio-btn");
 
-// Hide image at the start
+// Hide image initially
 wordImage.style.display = "none";
 
 // Word list with images and audio
@@ -72,7 +73,7 @@ audioBtn.addEventListener("click", () => {
 
 // Start the game
 function startGame() {
-  // Duplicate each word and shuffle
+  // Duplicate each word twice and shuffle
   game.roundWords = shuffleArray([...words, ...words]);
   game.score = 0;
   game.currentIndex = 0;
@@ -82,7 +83,7 @@ function startGame() {
   showWord();
 }
 
-// Show current word
+// Show the current word
 function showWord() {
   let current = game.roundWords[game.currentIndex];
   game.currentWord = current.text;
@@ -96,7 +97,7 @@ function showWord() {
   typeArea.focus();
 }
 
-// Check user's answer
+// Check user input
 function checkAnswer() {
   const userAnswer = typeArea.value.trim().toLowerCase();
   const correctWord = game.currentWord.toLowerCase();
@@ -121,7 +122,7 @@ function checkAnswer() {
   }, 1000);
 }
 
-// End of round
+// End of game
 function endGame() {
   wordImage.style.display = "none";
   wordElement.textContent = `You scored ${game.score} out of ${game.roundWords.length}!`;
@@ -137,11 +138,12 @@ function shuffleArray(array) {
   return array;
 }
 
-// Score display
+// Update score and progress display
 function updateScoreDisplay() {
   main.querySelector(".score-display")?.remove();
   const scoreDisplay = document.createElement("div");
   scoreDisplay.className = "score-display";
-  scoreDisplay.textContent = `Score: ${game.score} / ${game.roundWords.length}`;
+  const currentWordNumber = game.currentIndex + 1;
+  scoreDisplay.textContent = `Score: ${game.score} / ${game.roundWords.length} | Word ${currentWordNumber} of ${game.roundWords.length}`;
   main.appendChild(scoreDisplay);
 }
