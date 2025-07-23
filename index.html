@@ -8,10 +8,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 class="game-title">Word Game</h1>
-  <p class="instructions">Type the word you see in the box below and press "Done".</p>
+  <!-- Landing Page -->
+  <div class="landing-page" id="landingPage">
+    <h1>Welcome to the Word Game</h1>
+    <p>Learn and practice simple verbs by typing the word you see.</p>
+    <button id="playGameBtn">Play Game</button>
+  </div>
 
-  <div class="container">
+  <!-- Game Container (hidden initially) -->
+  <div class="container" id="gameContainer" style="display:none;">
+    <h1 class="game-title">Word Game</h1>
+    <p class="instructions">Type the word you see in the box below and press "Done".</p>
+
     <div class="main">
       <p class="word">Press Start to Begin!</p>
       <img class="word-img" src="" alt="word image" />
