@@ -29,7 +29,7 @@ const words = [
   { text: "walk", img: "walk.jpg", audio: "walk.mp3" },
   { text: "wash", img: "wash.jpg", audio: "wash.mp3" },
   { text: "write", img: "write.jpg", audio: "write.mp3" },
-  { text: "cook", img: "cook.JPG", audio: "cook.mp3" }
+  { text: "cook", img: "cook.jpg", audio: "cook.mp3" }
 ];
 
 let game = {
