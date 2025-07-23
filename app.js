@@ -1,3 +1,14 @@
+// Landing page elements
+const landingPage = document.getElementById("landingPage");
+const gameContainer = document.getElementById("gameContainer");
+const playGameBtn = document.getElementById("playGameBtn");
+
+playGameBtn.addEventListener("click", () => {
+  landingPage.style.display = "none";
+  gameContainer.style.display = "block";
+});
+
+// Game elements
 const main = document.querySelector(".main");
 const wordElement = document.querySelector(".word");
 const wordImage = document.querySelector(".word-img");
@@ -5,10 +16,10 @@ const typeArea = document.querySelector(".typingArea");
 const btn = document.querySelector(".btn");
 const audioBtn = document.querySelector(".audio-btn");
 
-// Hide image on load
+// Hide image at the start
 wordImage.style.display = "none";
 
-// Word list with image and audio
+// Word list with images and audio
 const words = [
   { text: "close", img: "close.jpg", audio: "close.mp3" },
   { text: "dance", img: "dance.jpg", audio: "dance.mp3" },
@@ -40,7 +51,7 @@ let game = {
   currentAudio: null
 };
 
-// Start / Done / Restart button logic
+// Button logic (Start/Done/Restart)
 btn.addEventListener("click", () => {
   if (btn.textContent === "Start") {
     startGame();
@@ -51,7 +62,7 @@ btn.addEventListener("click", () => {
   }
 });
 
-// Audio button logic
+// Audio button
 audioBtn.addEventListener("click", () => {
   if (game.currentAudio) {
     const audio = new Audio(game.currentAudio);
@@ -61,7 +72,7 @@ audioBtn.addEventListener("click", () => {
 
 // Start the game
 function startGame() {
-  // Duplicate words (2x each) and shuffle
+  // Duplicate each word and shuffle
   game.roundWords = shuffleArray([...words, ...words]);
   game.score = 0;
   game.currentIndex = 0;
@@ -85,7 +96,7 @@ function showWord() {
   typeArea.focus();
 }
 
-// Check user input
+// Check user's answer
 function checkAnswer() {
   const userAnswer = typeArea.value.trim().toLowerCase();
   const correctWord = game.currentWord.toLowerCase();
@@ -110,14 +121,14 @@ function checkAnswer() {
   }, 1000);
 }
 
-// End game
+// End of round
 function endGame() {
   wordImage.style.display = "none";
   wordElement.textContent = `You scored ${game.score} out of ${game.roundWords.length}!`;
   btn.textContent = "Restart";
 }
 
-// Shuffle function
+// Shuffle helper
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -126,7 +137,7 @@ function shuffleArray(array) {
   return array;
 }
 
-// Display score
+// Score display
 function updateScoreDisplay() {
   main.querySelector(".score-display")?.remove();
   const scoreDisplay = document.createElement("div");
