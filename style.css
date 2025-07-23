@@ -10,9 +10,47 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* Landing Page */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+  color: #2c1b4a;
+}
+
+.landing-page h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.landing-page p {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+#playGameBtn {
+  font-size: 1.5em;
+  padding: 15px 30px;
+  background-color: #4a148c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#playGameBtn:hover {
+  background-color: #6a1b9a;
+}
+
+/* Game Container */
 .game-title {
   font-size: 2.5em;
-  margin: 10px 0 5px 0;
+  margin-bottom: 10px;
   color: #4a148c;
   text-align: center;
 }
@@ -59,7 +97,7 @@ body {
   height: 120px;
   margin-top: 15px;
   padding: 10px;
-  font-size: 2em; /* Larger text for readability */
+  font-size: 2em; /* Larger text */
   border: 2px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
@@ -90,4 +128,10 @@ body {
 
 .audio-btn:hover {
   background-color: #00695c;
+}
+
+.score-display {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
 }
